@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import NoticeCard from "../components/NoticeCard";
 import SearchFilter from "../components/SearchFilter";
 import StatsCards from "../components/StatsCard";
+import DeleteModal from "../components/DeleteModal";
+import toast from "react-hot-toast";
 
 export default function Home() {
   const [notices, setNotices] = useState([]);
@@ -13,16 +15,22 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("ALL");
 
+  const [deleteId, setDeleteId] = useState(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+
   async function fetchNotices() {
-    try {
-      const res = await axios.get("/api/notices");
-      setNotices(res.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+  try {
+    setLoading(true);
+
+    const res = await axios.get("/api/notices");
+
+    setNotices(res.data);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoading(false);
   }
+}
 
   useEffect(() => {
     fetchNotices();
@@ -39,6 +47,24 @@ export default function Home() {
     return matchesSearch && matchesCategory;
   });
 
+  async function handleDeleteNotice() {
+  try {
+    setDeleteLoading(true);
+
+    await axios.delete(`/api/notices/${deleteId}`);
+
+    toast.success("Notice deleted");
+
+    setDeleteId(null);
+
+    fetchNotices();
+  } catch (error) {
+    toast.error("Unable to delete notice");
+  } finally {
+    setDeleteLoading(false);
+  }
+}
+
   const totalNotices = filteredNotices.length;
 
   const urgentNotices = filteredNotices.filter(
@@ -48,6 +74,7 @@ export default function Home() {
   const normalNotices = filteredNotices.filter(
     (notice) => !notice.priority
   ).length;
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -82,18 +109,24 @@ export default function Home() {
             </p>
           </div>
         ) : (
-          <div className="grid gap-6">
+         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredNotices.map((notice) => (
               <NoticeCard
                 key={notice.id}
                 notice={notice}
-                onDelete={() => {}}
+                onDelete={(id) => setDeleteId(id)}
               />
             ))}
           </div>
         )}
 
       </main>
+       <DeleteModal
+      open={deleteId !== null}
+      onClose={() => setDeleteId(null)}
+      onConfirm={handleDeleteNotice}
+      loading={deleteLoading}
+      />
     </div>
   );
 }

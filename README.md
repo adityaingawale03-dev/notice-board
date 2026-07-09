@@ -6,39 +6,41 @@ The application allows users to create, view, edit, search, filter, and delete n
 
 ---
 
-##  Features
+# 🚀 Features
 
--  View all notices
--  Create new notices
--  Edit existing notices
--  Delete notices with confirmation modal
--  Search notices by title or description
--  Filter notices by category
--  Display urgent and normal notices
--  Dashboard statistics
--  Fully responsive design
--  Modern UI using Tailwind CSS
+- 📄 View all notices
+- ➕ Create new notices
+- ✏️ Edit existing notices
+- 🗑️ Delete notices with confirmation modal
+- 🔍 Search notices by title or description
+- 📂 Filter notices by category
+- ⭐ Display urgent and normal notices
+- 📊 Dashboard statistics
+- 📱 Fully responsive design
+- 🎨 Modern UI using Tailwind CSS
 
 ---
 
-##  Tech Stack
+# 🛠️ Tech Stack
 
-### Frontend
+## Frontend
+
 - Next.js (Pages Router)
 - React.js
 - Tailwind CSS
 - Axios
 - React Hot Toast
-- Lucide React Icons
+- Lucide React
 
-### Backend
+## Backend
+
 - Next.js API Routes
 - Prisma ORM
 - MySQL (TiDB Cloud)
 
 ---
 
-##  Project Structure
+# 📁 Project Structure
 
 ```
 notice-board/
@@ -73,26 +75,26 @@ notice-board/
 
 ---
 
-##  Prerequisites
+# ⚙️ Prerequisites
 
-Make sure you have the following installed:
+Before running the project, ensure the following are installed:
 
-- Node.js (v18 or later recommended)
+- Node.js (v18 or later)
 - npm
-- MySQL Database / TiDB Cloud
 - Git
+- MySQL database (or TiDB Cloud)
 
 ---
 
-##  Installation
+# ▶️ Running the Project Locally
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/notice-board.git
+git clone https://github.com/adityaingawale03-dev/notice-board.git
 ```
 
-### 2. Navigate to the project
+### 2. Navigate into the project
 
 ```bash
 cd notice-board
@@ -104,53 +106,35 @@ cd notice-board
 npm install
 ```
 
----
+### 4. Create a `.env` file
 
-##  Environment Variables
-
-Create a `.env` file in the project root.
-
-Example:
+Create a `.env` file in the project root and add:
 
 ```env
 DATABASE_URL="mysql://username:password@host:4000/database"
 ```
 
-Replace the values with your own database credentials.
+Replace the connection string with your own database credentials.
 
----
-
-##  Database Setup
-
-Generate Prisma Client
+### 5. Generate Prisma Client
 
 ```bash
 npx prisma generate
 ```
 
-Synchronize the database schema
+### 6. Push the Prisma schema to the database
 
 ```bash
 npx prisma db push
 ```
 
-(Optional) Open Prisma Studio
-
-```bash
-npx prisma studio
-```
-
----
-
-##  Running the Project
-
-Start the development server
+### 7. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Open your browser and visit
+Open your browser and navigate to:
 
 ```
 http://localhost:3000
@@ -158,46 +142,63 @@ http://localhost:3000
 
 ---
 
-## API Endpoints
+# 📌 API Endpoints
 
 | Method | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/notices` | Fetch all notices |
-| GET | `/api/notices/:id` | Fetch single notice |
+|--------|----------|-------------|
+| GET | `/api/notices` | Get all notices |
+| GET | `/api/notices/:id` | Get a notice by ID |
 | POST | `/api/notices` | Create a notice |
 | PUT | `/api/notices/:id` | Update a notice |
 | DELETE | `/api/notices/:id` | Delete a notice |
 
 ---
 
-##  Screenshots
+# 📷 Screenshots
 
 ### Dashboard
 
-![Dashboard](public/screenshots/dashboard.png)
-
+![Dashboard](./public/screenshots/dashboard.png)
 
 ### Add Notice
 
-![Add Notice](public/screenshots/form.png)
+![Add Notice](./public/screenshots/form.png)
 
-### Edit Notice
+### Delete Confirmation
 
-![Delete Notice](public/screenshots/delete.png)
+![Delete Confirmation](./public/screenshots/delete.png)
 
 ---
 
+# 🔮 One Thing I Would Improve With More Time
 
+Given more time, I would implement **user authentication and authorization** so that only authenticated users can create, edit, or delete notices. I would also introduce **pagination**, **image uploads using cloud storage**, and **form validation with React Hook Form and Zod** to improve scalability, usability, and maintainability.
 
-##  Author
+---
+
+# 🤖 Where and How AI Was Used
+
+AI was used as a development assistant throughout the project. It helped with:
+
+- Planning the overall project structure.
+- Understanding Prisma and Next.js concepts.
+- Improving React component organization and code reusability.
+- Generating and refining UI components using Tailwind CSS.
+- Debugging errors during development.
+- Writing and improving documentation (README).
+
+All generated code and suggestions were reviewed, tested, and modified as needed before being incorporated into the final application.
+
+---
+
+# 👨‍💻 Author
 
 **Aditya Ingawale**
 
-- GitHub: 
-- LinkedIn:
+- GitHub:(https://github.com/adityaingawale03-dev)
 
 ---
 
-## License
+# 📄 License
 
-This project is created for educational and assignment purposes.
+This project was developed as part of a technical assignment and is intended for educational purposes.
